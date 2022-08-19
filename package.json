@@ -7,13 +7,17 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "fmt": "prettier -w . --ignore-path .gitignore"
   },
   "devDependencies": {
     "@astrojs/react": "^1.0.0",
+    "@astrojs/tailwind": "^1.0.0",
     "@types/react": "^18.0.10",
     "@types/react-dom": "^18.0.5",
-    "astro": "^1.0.6"
+    "astro": "^1.0.6",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.5.0"
   },
   "dependencies": {
     "react": "^18.1.0",

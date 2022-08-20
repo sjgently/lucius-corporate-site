@@ -1,0 +1,90 @@
+---
+import { Image } from '@astrojs/image/components'
+
+interface ITableRow {
+  property: string
+  value: string
+}
+
+interface ITableItem {
+  imgData: ImageMetadata
+  subName?: string
+  rowData: ITableRow[]
+}
+
+export interface IProps {
+  title: string
+  data: ITableItem[]
+}
+
+const { title, data } = Astro.props as IProps
+---
+
+<section class='py-8 px-4 lg:py-16 lg:px-6 bg-white dark:bg-gray-900'>
+  <h2
+    class='mb-6 mx-auto max-w-screen-xl text-4xl tracking-tight font-bold text-gray-900 dark:text-white'
+  >
+    {title}
+  </h2>
+  {
+    data.map(({ imgData, subName, rowData }, index) => {
+      const productContentBaseClassList = [
+        'gap-16',
+        'items-start',
+        'mx-auto',
+        'max-w-screen-xl',
+        'lg:grid',
+        'lg:grid-cols-3'
+      ]
+
+      return (
+        <div
+          class:list={
+            index === 0
+              ? productContentBaseClassList
+              : [...productContentBaseClassList, 'mt-10']
+          }
+        >
+          <div class='mb-6 lg:mb-0'>
+            <Image src={imgData} />
+          </div>
+          <div class='col-span-2'>
+            <div class:list={['overflow-x-auto', 'relative']}>
+              {typeof subName !== 'undefined' && (
+                <h3 class='mb-4 text-2xl tracking-tight font-medium'>
+                  {subName}
+                </h3>
+              )}
+
+              <table class='w-full text-sm text-left text-gray-900 dark:text-white'>
+                <thead class='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+                  <tr>
+                    <th scope='col' class='py-3 px-6'>
+                      Property
+                    </th>
+                    <th scope='col' class='py-3 px-6'>
+                      Value
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rowData.map(({ property, value }) => (
+                    <tr class='bg-white dark:bg-gray-800 border-b dark:border-gray-700'>
+                      <th
+                        scope='row'
+                        class='py-4 px-6 whitespace-nowrap font-medium'
+                      >
+                        {property}
+                      </th>
+                      <td class='py-4 px-6 font-medium'>{value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      )
+    })
+  }
+</section>

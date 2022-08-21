@@ -5,7 +5,7 @@ import imgSicSubstrate2 from '@src/assets/sic-substrate-2.jpg'
 import imgGanSubstrate from '@src/assets/gan-substrate.jpg'
 import imgAluminumNitride from '@src/assets/aluminum-nitride-substrate.jpg'
 
-import type { IProps as IProductProps } from './product.astro'
+import type { IProductProps } from './type'
 
 export const products: IProductProps[] = [
   {

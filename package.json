@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "fmt": "prettier -w . --ignore-path .gitignore"
+    "typecheck": "astro check && tsc --noEmit",
+    "format": "prettier -w . --ignore-path .gitignore"
   },
   "devDependencies": {
     "@astrojs/image": "^0.3.4",

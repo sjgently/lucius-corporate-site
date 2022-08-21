@@ -1,0 +1,10 @@
+---
+import PageSection from '@src/components/molecules/page-section.astro'
+
+import Product from './product.astro'
+import { products } from './data'
+---
+
+<PageSection title='Products' isWithPaddingY>
+  {products.map((props) => <Product {...props} />)}
+</PageSection>

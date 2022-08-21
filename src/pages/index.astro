@@ -1,7 +1,5 @@
 ---
-import DefaultLayout from '@src/layouts/default/index.astro'
-import Hero from '@src/components/hero.astro'
-import Products from '@src/components/products/index.astro'
+import HomePage from '@src/components/pages/home/index.astro'
 ---
 
 <html lang='en'>
@@ -12,9 +10,6 @@ import Products from '@src/components/products/index.astro'
     <link rel='icon' type='image/x-icon' href='/favicon.ico' />
   </head>
   <body>
-    <DefaultLayout>
-      <Hero />
-      <Products />
-    </DefaultLayout>
+    <HomePage />
   </body>
 </html>

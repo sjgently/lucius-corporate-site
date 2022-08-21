@@ -1,21 +1,7 @@
 ---
 import { Image } from '@astrojs/image/components'
 
-interface ITableRow {
-  property: string
-  value: string
-}
-
-interface ITableItem {
-  imgData: ImageMetadata
-  subName?: string
-  rowData: ITableRow[]
-}
-
-export interface IProps {
-  title: string
-  data: ITableItem[]
-}
+import type { IProductProps as IProps } from './type'
 
 const { title, data } = Astro.props as IProps
 ---

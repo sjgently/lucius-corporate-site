@@ -35,14 +35,14 @@ const { title, data } = Astro.props as IProps
             <Image src={imgData} />
           </div>
           <div class='col-span-2'>
-            <div class:list={['overflow-x-auto', 'relative']}>
-              {typeof subName !== 'undefined' && (
-                <h3 class='mb-4 text-2xl tracking-tight font-medium'>
-                  {subName}
-                </h3>
-              )}
+            {typeof subName !== 'undefined' && (
+              <h3 class='mb-4 text-2xl tracking-tight font-medium'>
+                {subName}
+              </h3>
+            )}
 
-              <table class='w-full text-sm text-left text-gray-900 dark:text-white'>
+            <div class:list={['overflow-x-auto', 'relative']}>
+              <table class='w-full min-w-tablet text-sm text-left text-gray-900 dark:text-white'>
                 <thead class='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
                   <tr>
                     <th scope='col' class='py-3 px-6'>

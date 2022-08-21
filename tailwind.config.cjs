@@ -19,6 +19,9 @@ module.exports = {
         }
       }
     },
+    minWidth: {
+      tablet: '640px'
+    },
     fontFamily: {
       body: [
         'Inter',

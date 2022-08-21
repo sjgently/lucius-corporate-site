@@ -1,21 +1,14 @@
 ---
 import Product from './product.astro'
-import {
-  dataSapphireSubstrate,
-  dataPss,
-  dataSic,
-  dataGanSubstrate,
-  dataAluminumNitrideSubstrate
-} from './data'
+import { products } from './data'
 ---
 
-<Product title='Sapphire substrate' data={dataSapphireSubstrate} />
+<article class='pt-8 lg:pt-16 bg-white dark:bg-gray-900'>
+  <h1
+    class='mx-auto max-w-screen-xl px-4 lg:px-6 xl:px-0 text-5xl font-extrabold dark:text-white'
+  >
+    Products
+  </h1>
 
-<Product title='PSS (Patterned Sapphire Substrate)' data={dataPss} />
-
-<Product title='SiC substrate' data={dataSic} />
-
-<Product title='GaN substrate' data={dataGanSubstrate} />
-
-<Product title='Aluminum nitride substrate' data={dataAluminumNitrideSubstrate}
-/>
+  {products.map((props) => <Product {...props} />)}
+</article>

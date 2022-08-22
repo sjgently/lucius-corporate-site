@@ -1,0 +1,21 @@
+---
+interface IProps {
+  href?: string
+}
+
+const { href } = Astro.props as IProps
+
+const logoClass =
+  'self-center text-xl font-semibold uppercase whitespace-nowrap dark:text-white'
+const logoText = 'lucius'
+---
+
+{
+  typeof href === 'undefined' ? (
+    <span class={logoClass}>{logoText}</span>
+  ) : (
+    <a href={href} class='flex items-center'>
+      <span class={logoClass}>{logoText}</span>
+    </a>
+  )
+}

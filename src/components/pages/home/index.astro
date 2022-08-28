@@ -1,13 +1,13 @@
 ---
-import DefaultLayout from '@src/components/templates/default/index.astro'
+import { DefaultTemplate } from '@src/components/templates/default'
 
 import Hero from './hero.astro'
 import Products from './products/index.astro'
 import Company from './company/index.astro'
 ---
 
-<DefaultLayout>
+<DefaultTemplate>
   <Hero />
   <Products />
   <Company />
-</DefaultLayout>
+</DefaultTemplate>

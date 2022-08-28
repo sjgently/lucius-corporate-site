@@ -55,7 +55,7 @@ interface IProps {
   children: string
 }
 
-export const Heading = ({ level, children }: IProps) => {
+export default function Heading({ level, children }: IProps) {
   switch (level) {
     case 1:
       return <h1 className={headingOneClassList.join(' ')}>{children}</h1>

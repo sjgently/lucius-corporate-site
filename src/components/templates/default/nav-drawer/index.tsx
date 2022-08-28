@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-import { Nav } from './nav'
-import { Drawer } from './drawer'
+import Nav from './nav'
+import Drawer from './drawer'
 
-export const NavDrawer = () => {
+export default function NavDrawer() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (

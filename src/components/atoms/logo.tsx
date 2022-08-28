@@ -8,11 +8,12 @@ interface IProps {
   href?: string
 }
 
-export const Logo = ({ href }: IProps) =>
-  typeof href === 'undefined' ? (
+export default function Logo({ href }: IProps) {
+  return typeof href === 'undefined' ? (
     <Content />
   ) : (
     <a href={href} className='flex items-center'>
       <Content />
     </a>
   )
+}

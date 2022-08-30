@@ -5,6 +5,6 @@ import Product from './product/index.astro'
 import { products } from './data'
 ---
 
-<PageSection title='Products' isWithPaddingY>
+<PageSection id='products' title='Products' isWithPaddingY>
   {products.map((props) => <Product {...props} />)}
 </PageSection>

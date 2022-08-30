@@ -1,13 +1,13 @@
 ---
 import DefaultTemplate from '@src/components/templates/default/index.astro'
 
-import Hero from './hero.astro'
+import Hero from './hero'
 import Products from './products/index.astro'
 import Company from './company/index.astro'
 ---
 
 <DefaultTemplate>
-  <Hero />
+  <Hero client:load />
   <Products />
   <Company />
 </DefaultTemplate>

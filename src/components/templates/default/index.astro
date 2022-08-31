@@ -3,8 +3,6 @@ import NavDrawer from './nav-drawer'
 import Backdrop from './backdrop'
 ---
 
-<div class='py-16'>
-  <NavDrawer client:load />
-  <slot />
-  <Backdrop client:load />
-</div>
+<NavDrawer client:load />
+<slot />
+<Backdrop client:load />

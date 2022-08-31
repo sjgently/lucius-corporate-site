@@ -1,4 +1,4 @@
-const headingBaseClassList = [
+const baseClassList = [
   'mx-auto',
   'max-w-screen-xl',
   'px-4',
@@ -7,42 +7,42 @@ const headingBaseClassList = [
 ]
 
 const headingOneClassList = [
-  ...headingBaseClassList,
+  ...baseClassList,
   'text-5xl',
   'font-extrabold',
   'dark:text-white'
 ]
 
 const headingTwoClassList = [
-  ...headingBaseClassList,
+  ...baseClassList,
   'text-4xl',
   'font-bold',
   'dark:text-white'
 ]
 
 const headingThreeClassList = [
-  ...headingBaseClassList,
+  ...baseClassList,
   'text-3xl',
   'font-bold',
   'dark:text-white'
 ]
 
 const headingFourClassList = [
-  ...headingBaseClassList,
+  ...baseClassList,
   'text-2xl',
   'font-bold',
   'dark:text-white'
 ]
 
 const headingFiveClassList = [
-  ...headingBaseClassList,
+  ...baseClassList,
   'text-xl',
   'font-bold',
   'dark:text-white'
 ]
 
 const headingSixClassList = [
-  ...headingBaseClassList,
+  ...baseClassList,
   'text-lg',
   'font-bold',
   'dark:text-white'

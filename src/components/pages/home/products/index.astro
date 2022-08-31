@@ -5,6 +5,10 @@ import Product from './product/index.astro'
 import { products } from './data'
 ---
 
-<PageSection id='products' title='Products' isWithPaddingY>
+<PageSection
+  id='products'
+  title='Products'
+  additionalClassList={['py-8', 'lg:py-16']}
+>
   {products.map((props) => <Product {...props} />)}
 </PageSection>

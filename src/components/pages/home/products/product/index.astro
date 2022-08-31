@@ -3,6 +3,15 @@ import { Image } from '@astrojs/image/components'
 
 import type { IProductProps as IProps } from './type'
 
+const baseClassList = [
+  'gap-16',
+  'items-start',
+  'mx-auto',
+  'max-w-screen-xl',
+  'lg:grid',
+  'lg:grid-cols-3'
+]
+
 const { title, data } = Astro.props as IProps
 ---
 
@@ -13,64 +22,47 @@ const { title, data } = Astro.props as IProps
     {title}
   </h2>
   {
-    data.map(({ imgData, subName, rowData }, index) => {
-      const productContentBaseClassList = [
-        'gap-16',
-        'items-start',
-        'mx-auto',
-        'max-w-screen-xl',
-        'lg:grid',
-        'lg:grid-cols-3'
-      ]
+    data.map(({ imgData, subName, rowData }, index) => (
+      <div
+        class:list={index === 0 ? baseClassList : [...baseClassList, 'mt-10']}
+      >
+        <div class='mb-6 lg:mb-0'>
+          <Image src={imgData} />
+        </div>
+        <div class='col-span-2'>
+          {typeof subName !== 'undefined' && (
+            <h3 class='mb-4 text-2xl tracking-tight font-medium'>{subName}</h3>
+          )}
 
-      return (
-        <div
-          class:list={
-            index === 0
-              ? productContentBaseClassList
-              : [...productContentBaseClassList, 'mt-10']
-          }
-        >
-          <div class='mb-6 lg:mb-0'>
-            <Image src={imgData} />
-          </div>
-          <div class='col-span-2'>
-            {typeof subName !== 'undefined' && (
-              <h3 class='mb-4 text-2xl tracking-tight font-medium'>
-                {subName}
-              </h3>
-            )}
-
-            <div class='overflow-x-auto relative'>
-              <table class='w-full min-w-tablet text-sm text-left text-gray-900 dark:text-white'>
-                <thead class='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
-                  <tr>
-                    <th scope='col' class='py-3 px-6'>
-                      Property
+          <div class='overflow-x-auto relative'>
+            <table class='w-full min-w-tablet text-sm text-left text-gray-900 dark:text-white'>
+              <thead class='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+                <tr>
+                  <th scope='col' class='py-3 px-6'>
+                    Property
+                  </th>
+                  <th scope='col' class='py-3 px-6'>
+                    Value
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {rowData.map(({ property, value }) => (
+                  <tr class='bg-white dark:bg-gray-800 border-b dark:border-gray-700'>
+                    <th
+                      scope='row'
+                      class='py-4 px-6 whitespace-nowrap font-medium'
+                    >
+                      {property}
                     </th>
-                    <th scope='col' class='py-3 px-6'>
-                      Value
-                    </th>
+                    <td class='py-4 px-6 font-medium'>{value}</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {rowData.map(({ property, value }) => (
-                    <tr class='bg-white dark:bg-gray-800 border-b dark:border-gray-700'>
-                      <th
-                        scope='row'
-                        class='py-4 px-6 whitespace-nowrap font-medium'
-                      >
-                        {property}
-                      </th>
-                      <td class='py-4 px-6 font-medium'>{value}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
-      )
-    })
+      </div>
+    ))
   }
 </section>

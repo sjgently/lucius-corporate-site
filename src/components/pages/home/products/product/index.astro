@@ -1,6 +1,8 @@
 ---
 import { Image } from '@astrojs/image/components'
 
+import Heading from '@src/components/atoms/heading'
+
 import type { IProductProps as IProps } from './type'
 
 const baseClassList = [
@@ -16,11 +18,12 @@ const { title, data } = Astro.props as IProps
 ---
 
 <section class='py-8 px-4 lg:py-16 lg:px-6'>
-  <h2
-    class='mb-6 mx-auto max-w-screen-xl text-4xl tracking-tight font-bold text-gray-900 dark:text-white'
+  <Heading
+    level={2}
+    additionalClassList={['mb-6', 'mx-auto', 'max-w-screen-xl']}
   >
     {title}
-  </h2>
+  </Heading>
   {
     data.map(({ imgData, subName, rowData }, index) => (
       <div
@@ -31,7 +34,9 @@ const { title, data } = Astro.props as IProps
         </div>
         <div class='col-span-2'>
           {typeof subName !== 'undefined' && (
-            <h3 class='mb-4 text-2xl tracking-tight font-medium'>{subName}</h3>
+            <Heading level={3} additionalClassList={['mb-4']}>
+              {subName}
+            </Heading>
           )}
 
           <div class='overflow-x-auto relative'>

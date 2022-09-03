@@ -53,22 +53,69 @@ type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6
 interface IProps {
   level: HeadingLevel
   children: string
+  additionalClassList?: string[]
 }
 
-export default function Heading({ level, children }: IProps) {
+export default function Heading({
+  level,
+  children,
+  additionalClassList = []
+}: IProps) {
   switch (level) {
     case 1:
-      return <h1 className={headingOneClassList.join(' ')}>{children}</h1>
+      return (
+        <h1
+          className={[...headingOneClassList, ...additionalClassList].join(' ')}
+        >
+          {children}
+        </h1>
+      )
     case 2:
-      return <h2 className={headingTwoClassList.join(' ')}>{children}</h2>
+      return (
+        <h2
+          className={[...headingTwoClassList, ...additionalClassList].join(' ')}
+        >
+          {children}
+        </h2>
+      )
     case 3:
-      return <h3 className={headingThreeClassList.join(' ')}>{children}</h3>
+      return (
+        <h3
+          className={[...headingThreeClassList, ...additionalClassList].join(
+            ' '
+          )}
+        >
+          {children}
+        </h3>
+      )
     case 4:
-      return <h4 className={headingFourClassList.join(' ')}>{children}</h4>
+      return (
+        <h4
+          className={[...headingFourClassList, ...additionalClassList].join(
+            ' '
+          )}
+        >
+          {children}
+        </h4>
+      )
     case 5:
-      return <h5 className={headingFiveClassList.join(' ')}>{children}</h5>
+      return (
+        <h5
+          className={[...headingFiveClassList, ...additionalClassList].join(
+            ' '
+          )}
+        >
+          {children}
+        </h5>
+      )
     case 6:
-      return <h6 className={headingSixClassList.join(' ')}>{children}</h6>
+      return (
+        <h6
+          className={[...headingSixClassList, ...additionalClassList].join(' ')}
+        >
+          {children}
+        </h6>
+      )
     default:
       return null
   }

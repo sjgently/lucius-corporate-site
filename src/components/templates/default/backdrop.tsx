@@ -12,7 +12,7 @@ export default function Backdrop() {
   return (
     <div
       onClick={() => setBackdrop(BackdropEnum.None)}
-      className='bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-30'
+      className='bg-gray-900 bg-opacity-20 dark:bg-opacity-50 fixed inset-0 z-30'
     />
   )
 }

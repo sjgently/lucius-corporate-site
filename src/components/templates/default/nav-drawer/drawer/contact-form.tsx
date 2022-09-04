@@ -1,6 +1,25 @@
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { parseOneAddress } from 'email-addresses'
+
+type FormData = {
+  email: string
+  subject: string
+  message: string
+}
+
 export default function ContactForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormData>()
+
+  const onSubmit: SubmitHandler<FormData> = (data) => console.log(data)
+
+  console.log('errors', errors)
+
   return (
-    <form action='#' className='mb-6'>
+    <form onSubmit={handleSubmit(onSubmit)} className='mb-6'>
       <div className='mb-6'>
         <label
           htmlFor='email'
@@ -9,11 +28,14 @@ export default function ContactForm() {
           Your email
         </label>
         <input
-          type='email'
           id='email'
+          {...register('email', {
+            required: true,
+            validate: (value) =>
+              parseOneAddress(value) !== null || 'invalid email'
+          })}
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
           placeholder='name@company.com'
-          required
         />
       </div>
       <div className='mb-6'>
@@ -26,9 +48,9 @@ export default function ContactForm() {
         <input
           type='text'
           id='subject'
+          {...register('subject', { required: true })}
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
           placeholder='Let us know how we can help you'
-          required
         />
       </div>
       <div className='mb-6'>
@@ -40,10 +62,11 @@ export default function ContactForm() {
         </label>
         <textarea
           id='message'
+          {...register('message', { required: true })}
           rows={4}
           className='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
           placeholder='Your message...'
-        ></textarea>
+        />
       </div>
       <button
         type='submit'

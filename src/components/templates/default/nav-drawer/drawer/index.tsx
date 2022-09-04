@@ -21,7 +21,7 @@ const baseClassList = [
 ]
 
 export default function Drawer() {
-  const [backdrop, setBackdrop] = useAtom(backdropAtom)
+  const [backdrop] = useAtom(backdropAtom)
 
   return (
     <div

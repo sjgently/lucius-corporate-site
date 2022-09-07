@@ -1,6 +1,23 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { parseOneAddress } from 'email-addresses'
 
+const getIsValidEmail = (value: string) => parseOneAddress(value) !== null
+
+const buttonBaseClassList = [
+  'text-white',
+  'bg-blue-700',
+  'w-full',
+  'font-medium',
+  'rounded-lg',
+  'text-sm',
+  'px-5',
+  'py-2.5',
+  'mr-2',
+  'mb-2',
+  'dark:bg-blue-600',
+  'block'
+]
+
 type FormData = {
   email: string
   subject: string
@@ -8,15 +25,21 @@ type FormData = {
 }
 
 export default function ContactForm() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<FormData>()
+  const { register, handleSubmit, watch } = useForm<FormData>()
+
+  const watchEmail = watch('email')
+  const isValidEmail = getIsValidEmail(watchEmail)
+  const isShowEmailError = !isValidEmail && watchEmail !== ''
+
+  const watchSubject = watch('subject')
+  const isValidSubject = watchSubject !== ''
+
+  const watchMessage = watch('message')
+  const isValidMessage = watchMessage !== ''
+
+  const isEnableSubmit = isValidEmail && isValidSubject && isValidMessage
 
   const onSubmit: SubmitHandler<FormData> = (data) => console.log(data)
-
-  console.log('errors', errors)
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='mb-6'>
@@ -31,12 +54,19 @@ export default function ContactForm() {
           id='email'
           {...register('email', {
             required: true,
-            validate: (value) =>
-              parseOneAddress(value) !== null || 'invalid email'
+            validate: (value) => parseOneAddress(value) !== null
           })}
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
           placeholder='name@company.com'
         />
+        {isShowEmailError && (
+          <p
+            id='filled_error_help'
+            className='mt-2 text-xs text-red-600 dark:text-red-400'
+          >
+            invalid email
+          </p>
+        )}
       </div>
       <div className='mb-6'>
         <label
@@ -70,7 +100,20 @@ export default function ContactForm() {
       </div>
       <button
         type='submit'
-        className='text-white bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 block'
+        disabled={!isEnableSubmit}
+        className={
+          isEnableSubmit
+            ? [
+                ...buttonBaseClassList,
+                'hover:bg-blue-800',
+                'focus:ring-4',
+                'focus:ring-blue-300',
+                'dark:hover:bg-blue-700',
+                'focus:outline-none',
+                'dark:focus:ring-blue-800'
+              ].join(' ')
+            : [...buttonBaseClassList, 'cursor-not-allowed'].join(' ')
+        }
       >
         Send message
       </button>

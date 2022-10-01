@@ -1,43 +1,39 @@
 ---
+import { gql } from 'graphql-request'
+
+import { gqlClient } from '@src/utils/gql-client'
 import PageSection from '@src/components/molecules/page-section'
 
 import Product from './product/index.astro'
 import { products } from './data'
 
-const response = await fetch(import.meta.env.CONTENT_API_URL as string, {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    query: `
-        query MyQuery {
-          products {
-            id
-            locale
-            name
-            createdAt
-            updatedAt
-            image {
-              createdAt
-              url
-              handle
-              fileName
-              width
-              height
-            }
-            spec {
-              raw
-            }
-          }
-        }
-      `
-  })
-})
-const json = await response.json()
+const query = gql`
+  query MyQuery {
+    products {
+      id
+      locale
+      name
+      createdAt
+      updatedAt
+      image {
+        createdAt
+        url
+        handle
+        fileName
+        width
+        height
+      }
+      spec {
+        raw
+      }
+    }
+  }
+`
 
-console.log('🚀 ~ file: index.astro ~ line 37 ~ json', json)
+gqlClient
+  .request(import.meta.env.CONTENT_API_URL as string, query)
+  .then((data) => console.log(data))
 ---
-
-{JSON.stringify(json)}
 
 <PageSection
   id='products'

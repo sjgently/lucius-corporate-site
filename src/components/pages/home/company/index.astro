@@ -1,7 +1,8 @@
 ---
+import * as companyContent from '@src/contents/pages/home/company.md'
 import PageSection from '@src/components/molecules/page-section'
 
-import { companyRowData } from './data'
+import TableRow from './table-row.astro'
 ---
 
 <PageSection title='Company' additionalClassList={['py-8', 'lg:py-16']}>
@@ -11,19 +12,38 @@ import { companyRowData } from './data'
         class='w-full min-w-tablet text-sm text-left text-gray-500 dark:text-gray-400'
       >
         <tbody>
-          {
-            companyRowData.map(({ property, value }) => (
-              <tr class='border-b border-gray-200 dark:border-gray-700'>
-                <th
-                  scope='row'
-                  class='py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800'
-                >
-                  {property}
-                </th>
-                <td class='py-4 px-6'>{value}</td>
-              </tr>
-            ))
-          }
+          <TableRow
+            headingText='company'
+            dataText={companyContent.frontmatter.company}
+          />
+          <TableRow
+            headingText='president'
+            dataText={companyContent.frontmatter.president}
+          />
+          <TableRow
+            headingText='established'
+            dataText={companyContent.frontmatter.established}
+          />
+          <TableRow
+            headingText='capital'
+            dataText={companyContent.frontmatter.capital}
+          />
+          <TableRow
+            headingText='address'
+            dataText={companyContent.frontmatter.address}
+          />
+          <TableRow
+            headingText='phone'
+            dataText={companyContent.frontmatter.phone}
+          />
+          <TableRow
+            headingText='email'
+            dataText={companyContent.frontmatter.email}
+          />
+          <TableRow
+            headingText='service'
+            dataText={companyContent.frontmatter.service}
+          />
         </tbody>
       </table>
     </div>

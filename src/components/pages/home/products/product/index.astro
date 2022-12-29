@@ -1,9 +1,8 @@
 ---
 import { Image } from '@astrojs/image/components'
 
+import type { IProduct } from '@src/contents/pages/home/products'
 import Heading from '@src/components/atoms/heading'
-
-import type { IProductProps as IProps } from './type'
 
 const baseClassList = [
   'gap-16',
@@ -14,7 +13,7 @@ const baseClassList = [
   'lg:grid-cols-3'
 ]
 
-const { title, data } = Astro.props as IProps
+const { title, data } = Astro.props as IProduct
 ---
 
 <section class='py-8 px-4 lg:py-16 lg:px-6'>

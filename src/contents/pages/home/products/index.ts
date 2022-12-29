@@ -1,13 +1,15 @@
-import imgSapphireSubstrate from '@src/assets/supphire-substrate.jpg'
+import imgSapphireSubstrate from '@src/assets/sapphire-substrate.jpg'
 import imgPss from '@src/assets/pss.jpg'
 import imgSicSubstrate1 from '@src/assets/sic-substrate-1.jpg'
 import imgSicSubstrate2 from '@src/assets/sic-substrate-2.jpg'
 import imgGanSubstrate from '@src/assets/gan-substrate.jpg'
-import imgAluminumNitride from '@src/assets/aluminum-nitride-substrate.jpg'
+import imgAluminumNitrideSubstrate from '@src/assets/aluminum-nitride-substrate.jpg'
 
-import type { IProductProps } from './product/type'
+import type * as type from './type'
 
-export const products: IProductProps[] = [
+export * from './type'
+
+export const products: type.IProduct[] = [
   {
     title: 'Sapphire substrate',
     data: getSapphireSubstrateData()
@@ -18,7 +20,7 @@ export const products: IProductProps[] = [
   },
   {
     title: 'SiC substrate',
-    data: getSicData()
+    data: getSicSubstrateData()
   },
   {
     title: 'GaN substrate',
@@ -30,7 +32,7 @@ export const products: IProductProps[] = [
   }
 ]
 
-function getSapphireSubstrateData(): IProductProps['data'] {
+function getSapphireSubstrateData(): type.IProduct['data'] {
   return [
     {
       imgData: imgSapphireSubstrate,
@@ -57,7 +59,7 @@ function getSapphireSubstrateData(): IProductProps['data'] {
   ]
 }
 
-function getPssData(): IProductProps['data'] {
+function getPssData(): type.IProduct['data'] {
   return [
     {
       imgData: imgPss,
@@ -92,7 +94,7 @@ function getPssData(): IProductProps['data'] {
   ]
 }
 
-function getSicData(): IProductProps['data'] {
+function getSicSubstrateData(): type.IProduct['data'] {
   return [
     {
       imgData: imgSicSubstrate1,
@@ -141,7 +143,7 @@ function getSicData(): IProductProps['data'] {
   ]
 }
 
-function getGanSubstrateData(): IProductProps['data'] {
+function getGanSubstrateData(): type.IProduct['data'] {
   return [
     {
       imgData: imgGanSubstrate,
@@ -164,10 +166,10 @@ function getGanSubstrateData(): IProductProps['data'] {
   ]
 }
 
-function getAluminumNitrideSubstrateData(): IProductProps['data'] {
+function getAluminumNitrideSubstrateData(): type.IProduct['data'] {
   return [
     {
-      imgData: imgAluminumNitride,
+      imgData: imgAluminumNitrideSubstrate,
       subName: 'Single crystal aluminum nitride substrate',
       rowData: [
         {

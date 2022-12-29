@@ -1,38 +1,8 @@
 ---
-import { gql } from 'graphql-request'
-
-import { gqlClient } from '@src/utils/gql-client'
 import PageSection from '@src/components/molecules/page-section'
 
 import Product from './product/index.astro'
 import { products } from './data'
-
-const query = gql`
-  query MyQuery {
-    products {
-      id
-      locale
-      name
-      createdAt
-      updatedAt
-      image {
-        createdAt
-        url
-        handle
-        fileName
-        width
-        height
-      }
-      spec {
-        raw
-      }
-    }
-  }
-`
-
-gqlClient
-  .request(import.meta.env.CONTENT_API_URL as string, query)
-  .then((data) => console.log(data))
 ---
 
 <PageSection

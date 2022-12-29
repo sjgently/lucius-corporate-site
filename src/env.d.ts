@@ -1,7 +1,7 @@
 /// <reference types="@astrojs/image/client" />
 
 interface ImportMetaEnv {
-  readonly CONTENT_API_URL: string
+  readonly ENV_VAR_NAME: string
 }
 
 interface ImportMeta {

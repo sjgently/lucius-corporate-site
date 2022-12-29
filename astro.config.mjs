@@ -7,5 +7,12 @@ import mdx from '@astrojs/mdx'
 // https://astro.build/config
 export default defineConfig({
   // Enable React to support React JSX components.
-  integrations: [react(), tailwind(), image(), mdx()]
+  integrations: [
+    react(),
+    tailwind(),
+    image(),
+    mdx({
+      drafts: true
+    })
+  ]
 })

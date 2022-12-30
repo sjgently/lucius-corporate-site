@@ -1,8 +1,10 @@
 ---
 import { Image } from '@astrojs/image/components'
 
-import type { IProduct } from '@src/contents/pages/home/products'
+import type { IProduct as IProductProps } from '@src/contents/pages/home/products'
 import Heading from '@src/components/atoms/heading'
+
+import TableRow from './table-row.astro'
 
 const baseClassList = [
   'gap-16',
@@ -13,7 +15,7 @@ const baseClassList = [
   'lg:grid-cols-3'
 ]
 
-const { title, data } = Astro.props as IProduct
+const { title, data } = Astro.props as IProductProps
 ---
 
 <section class='py-8 px-4 lg:py-16 lg:px-6'>
@@ -58,15 +60,7 @@ const { title, data } = Astro.props as IProduct
               </thead>
               <tbody>
                 {rowData.map(({ property, value }) => (
-                  <tr class='bg-white dark:bg-gray-800 border-b dark:border-gray-700'>
-                    <th
-                      scope='row'
-                      class='py-4 px-6 whitespace-nowrap font-medium'
-                    >
-                      {property}
-                    </th>
-                    <td class='py-4 px-6 font-medium'>{value}</td>
-                  </tr>
+                  <TableRow property={property} value={value} />
                 ))}
               </tbody>
             </table>

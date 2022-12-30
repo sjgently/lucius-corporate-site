@@ -1,0 +1,15 @@
+---
+interface ITableRowProps {
+  property: string
+  value: string
+}
+
+const { property, value } = Astro.props as ITableRowProps
+---
+
+<tr class='bg-white dark:bg-gray-800 border-b dark:border-gray-700'>
+  <th scope='row' class='py-4 px-6 whitespace-nowrap font-medium'>
+    {property}
+  </th>
+  <td class='py-4 px-6 font-medium'>{value}</td>
+</tr>

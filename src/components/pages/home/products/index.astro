@@ -10,5 +10,5 @@ import Product from './product/index.astro'
   title='Products'
   additionalClassList={['py-8', 'lg:py-16']}
 >
-  {products.map((props) => <Product {...props} />)}
+  {products.map(({ title, data }) => <Product title={title} data={data} />)}
 </PageSection>

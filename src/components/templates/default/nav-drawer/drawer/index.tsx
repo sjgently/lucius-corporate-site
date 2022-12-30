@@ -1,6 +1,7 @@
 import { useAtom } from 'jotai'
 
 import { Backdrop, backdropAtom } from '@src/stores/backdrop'
+import * as companyContent from '@src/contents/pages/home/company.md'
 
 import CloseButton from './close-button'
 import ContactForm from './contact-form'
@@ -50,8 +51,10 @@ export default function Drawer() {
       </h5>
       <CloseButton />
       <ContactForm />
-      <ContactLink additionalClassList={['mb-2']}>info@company.com</ContactLink>
-      <ContactLink>212-456-7890</ContactLink>
+      <ContactLink additionalClassList={['mb-2']}>
+        {companyContent.frontmatter.email}
+      </ContactLink>
+      <ContactLink>{companyContent.frontmatter.phone}</ContactLink>
     </div>
   )
 }

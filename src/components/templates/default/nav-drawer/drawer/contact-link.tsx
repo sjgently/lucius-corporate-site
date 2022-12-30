@@ -13,9 +13,7 @@ export default function ContactLink({
 }: IProps) {
   return (
     <p className={[...baseClassList, ...additionalClassList].join(' ')}>
-      <a href={href} className='hover:underline'>
-        {children}
-      </a>
+      <a href={href}>{children}</a>
     </p>
   )
 }

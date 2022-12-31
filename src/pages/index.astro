@@ -1,20 +1,31 @@
 ---
+import * as metaContent from '@src/contents/pages/home/meta.md'
 import HomePage from '@src/components/pages/home/index.astro'
 ---
 
 <html lang='en'>
   <head>
     <meta charset='utf-8' />
-    <meta name='viewport' content='width=device-width' />
-    <meta name='generator' content={Astro.generator} />
-    <meta name='msapplication-TileColor' content='#2b5797' />
-    <meta name='theme-color' content='#ffffff' />
+    <title>{metaContent.frontmatter.title}</title>
+    <meta name='description' content={metaContent.frontmatter.description} />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+    <meta property='og:title' content={metaContent.frontmatter.description} />
+    <meta property='og:type' content='website' />
+    <meta property='og:url' content={metaContent.frontmatter.url} />
+    <meta property='og:image' content='/lucius-logo-wide-desc.png' />
+
     <link rel='icon' type='image/x-icon' href='/favicon.ico' />
     <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
     <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
     <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
     <link rel='manifest' href='/site.webmanifest' />
     <link rel='mask-icon' href='/safari-pinned-tab.svg' color='#2b5797' />
+
+    <meta name='generator' content={Astro.generator} />
+    <meta name='msapplication-TileColor' content='#2b5797' />
+    <meta name='theme-color' content='#ffffff' />
+
     <script type='module' src='/script.ts' is:inline></script>
   </head>
   <body>

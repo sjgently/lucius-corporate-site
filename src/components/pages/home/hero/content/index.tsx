@@ -21,10 +21,7 @@ export default function Content({ mainText, subText }: IProps) {
           <ScrollButton>View detail</ScrollButton>
         </div>
         <div className='hidden lg:mt-0 lg:col-span-5 lg:flex'>
-          <img
-            src='https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png'
-            alt='mockup'
-          />
+          <img src='/hero-image.png' alt='wafer image' />
         </div>
       </div>
     </PageSection>

@@ -42,7 +42,7 @@ export default function ContactForm() {
   const onSubmit: SubmitHandler<FormData> = (data) => console.log(data)
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='mb-6'>
+    <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='mb-6'>
       <div className='mb-6'>
         <label
           htmlFor='email'

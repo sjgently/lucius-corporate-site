@@ -1,8 +1,8 @@
 import Logo from '@src/components/atoms/logo'
 
 import ThemeToggleButton from './theme-toggle-button'
-import LanguageDropdown from './language-dropdown'
-import ContactButton from './contact-button'
+// import LanguageDropdown from './language-dropdown'
+// import ContactButton from './contact-button'
 
 export default function Nav() {
   return (
@@ -11,8 +11,8 @@ export default function Nav() {
         <Logo />
         <div className='flex gap-4 md:order-2'>
           <ThemeToggleButton />
-          <LanguageDropdown />
-          <ContactButton />
+          {/* <LanguageDropdown /> */}
+          {/* <ContactButton /> */}
         </div>
       </div>
     </nav>

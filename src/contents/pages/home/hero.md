@@ -1,6 +1,4 @@
 ---
-mainText: 'We supply various custom wafers'
-subText: 'We supply custom sapphire wafer, PSS wafer, and SiC wafer from manufacturers including China, Korea, Taiwan, Europe, and USA'
-# mainText: 'We supply the sapphire wafer, PSS, and SiC wafer.'
-# subText: 'Manufacturing locations: China, Korea, Taiwan, Europe, USA'
+mainText: 'We supply various wafers for you'
+subText: 'Small quantities / High varieties / In-production. Core products: sapphire wafer, nano PSS, and SiC wafer'
 ---

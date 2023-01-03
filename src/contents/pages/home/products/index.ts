@@ -1,9 +1,7 @@
 import imgSapphireSubstrate from '@src/assets/sapphire-substrate.jpg'
-import imgPss from '@src/assets/pss.jpg'
+import imgNanoPss from '@src/assets/pss.jpg'
 import imgSicSubstrate1 from '@src/assets/sic-substrate-1.jpg'
 import imgSicSubstrate2 from '@src/assets/sic-substrate-2.jpg'
-import imgGanSubstrate from '@src/assets/gan-substrate.jpg'
-import imgAluminumNitrideSubstrate from '@src/assets/aluminum-nitride-substrate.jpg'
 
 import type * as type from './type'
 
@@ -11,28 +9,20 @@ export * from './type'
 
 export const products: type.IProduct[] = [
   {
-    title: 'Sapphire substrate',
-    data: getSapphireSubstrateData()
+    title: 'Sapphire wafer',
+    data: getSapphireWaferData()
   },
   {
-    title: 'PSS (Patterned Sapphire Substrate)',
-    data: getPssData()
+    title: 'Nano PSS',
+    data: getNanoPssData()
   },
   {
-    title: 'SiC substrate',
-    data: getSicSubstrateData()
-  },
-  {
-    title: 'GaN substrate',
-    data: getGanSubstrateData()
-  },
-  {
-    title: 'Aluminum nitride substrate',
-    data: getAluminumNitrideSubstrateData()
+    title: 'SiC wafer',
+    data: getSicWaferData()
   }
 ]
 
-function getSapphireSubstrateData(): type.IProduct['data'] {
+function getSapphireWaferData(): type.IProduct['data'] {
   return [
     {
       imgData: imgSapphireSubstrate,
@@ -59,26 +49,26 @@ function getSapphireSubstrateData(): type.IProduct['data'] {
   ]
 }
 
-function getPssData(): type.IProduct['data'] {
+function getNanoPssData(): type.IProduct['data'] {
   return [
     {
-      imgData: imgPss,
+      imgData: imgNanoPss,
       rowData: [
         {
           property: 'Diameter',
-          value: '2”, 4”, 6”'
+          value: '2”, 4”'
         },
         {
           property: 'Pattern pitch',
-          value: '3 µm, 2 µm, 1.5 µm'
+          value: '1,000 nm'
         },
         {
-          property: 'Diameter',
-          value: '1.0 ~ 2.8 µm'
+          property: 'Type',
+          value: 'Cone or Hole'
         },
         {
           property: 'Depth',
-          value: '0.6 ~ 2.0 µm'
+          value: '250 ~ 500 nm'
         },
         {
           property: 'Polishing method',
@@ -94,15 +84,15 @@ function getPssData(): type.IProduct['data'] {
   ]
 }
 
-function getSicSubstrateData(): type.IProduct['data'] {
+function getSicWaferData(): type.IProduct['data'] {
   return [
     {
       imgData: imgSicSubstrate1,
-      subName: '4 inch 4H-SiC N-type Substrate',
+      subName: '4, 6 inch 4H-SiC N-type wafer',
       rowData: [
         {
           property: 'Diameter',
-          value: '100.0 mm + 0.0/-0.5 mm'
+          value: '100.0 mm + 0.0/-0.5 mm, 150.0 mm + 0.0/-0.5 mm'
         },
         {
           property: 'Thickness',
@@ -120,11 +110,11 @@ function getSicSubstrateData(): type.IProduct['data'] {
     },
     {
       imgData: imgSicSubstrate2,
-      subName: '4 inch 4H-SiC High-Purity Semi-Insulating Substrate',
+      subName: '4, 6 inch 4H-SiC Semi-Insulating wafer',
       rowData: [
         {
           property: 'Diameter',
-          value: '100.0 mm + 0.0/-0.5 mm'
+          value: '100.0 mm + 0.0/-0.5 mm, 150.0 mm + 0.0/-0.5 mm'
         },
         {
           property: 'Thickness',
@@ -137,56 +127,6 @@ function getSicSubstrateData(): type.IProduct['data'] {
         {
           property: 'Resistivity',
           value: '≥ 1E7 Ω·cm'
-        }
-      ]
-    }
-  ]
-}
-
-function getGanSubstrateData(): type.IProduct['data'] {
-  return [
-    {
-      imgData: imgGanSubstrate,
-      subName: '2 inch Free-Standing GaN Substrates',
-      rowData: [
-        {
-          property: 'Diameter',
-          value: 'φ50.8 ± 1 mm'
-        },
-        {
-          property: 'Thickness',
-          value: '350 ± 25 µm'
-        },
-        {
-          property: 'Micropipe Density',
-          value: '< 0.05 Ω*cm for N-type or > 1 x 106 Ω*cm for Semi-insulating'
-        }
-      ]
-    }
-  ]
-}
-
-function getAluminumNitrideSubstrateData(): type.IProduct['data'] {
-  return [
-    {
-      imgData: imgAluminumNitrideSubstrate,
-      subName: 'Single crystal aluminum nitride substrate',
-      rowData: [
-        {
-          property: 'Diameter',
-          value: '50.8 mm ± 0.5 mm'
-        },
-        {
-          property: 'Thickness',
-          value: '	400.0 μm ± 50.0 μm'
-        },
-        {
-          property: 'Orientation',
-          value: '{0001} ± 0.5°'
-        },
-        {
-          property: 'High resolution XRD Rocking Curve, (0002) Reflection',
-          value: '< 100 arcsec FWHM'
         }
       ]
     }

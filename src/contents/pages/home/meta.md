@@ -1,5 +1,5 @@
 ---
-title: 'LUCIUS | World wide custom wafer supplying service'
-description: 'Lucius supply custom sapphire, PSS, and SiC wafer from manufacturers including China, Korea, Taiwan, Europe, and USA'
+title: 'LUCIUS | We supply various wafers for you'
+description: 'Lucius supply various wafers with small quantities / high varieties / in-production. Our core products are sapphire wafer, nano PSS, and SiC wafer'
 url: 'https://www.lucius.co.jp/'
 ---

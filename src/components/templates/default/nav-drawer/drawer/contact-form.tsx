@@ -1,8 +1,8 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
-// import { parseOneAddress } from 'email-addresses'
+import emailRegex from 'email-regex'
 
-// const getIsValidEmail = (value: string) => parseOneAddress(value) !== null
-const getIsValidEmail = (value: string) => value !== null
+const getIsValidEmail = (value: string) =>
+  emailRegex({ exact: true }).test(value)
 
 const buttonBaseClassList = [
   'text-white',

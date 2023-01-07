@@ -1,7 +1,7 @@
-import imgSapphireSubstrate from '@src/assets/sapphire-substrate.jpg'
-import imgNanoPss from '@src/assets/pss.jpg'
-import imgSicSubstrate1 from '@src/assets/sic-substrate-1.jpg'
-import imgSicSubstrate2 from '@src/assets/sic-substrate-2.jpg'
+import imgProductSapphireWafer from '@src/assets/product-sapphire-wafer.jpg'
+import imgProductNanoPss from '@src/assets/product-nano-pss.jpg'
+import imgProductSicWafer1 from '@src/assets/product-sic-wafer-1.jpg'
+import imgProductSicWafer2 from '@src/assets/product-sic-wafer-2.jpg'
 
 import type * as type from './type'
 
@@ -25,7 +25,7 @@ export const products: type.IProduct[] = [
 function getSapphireWaferData(): type.IProduct['data'] {
   return [
     {
-      imgData: imgSapphireSubstrate,
+      imgData: imgProductSapphireWafer,
       rowData: [
         {
           property: 'Diameter',
@@ -52,7 +52,7 @@ function getSapphireWaferData(): type.IProduct['data'] {
 function getNanoPssData(): type.IProduct['data'] {
   return [
     {
-      imgData: imgNanoPss,
+      imgData: imgProductNanoPss,
       rowData: [
         {
           property: 'Diameter',
@@ -87,7 +87,7 @@ function getNanoPssData(): type.IProduct['data'] {
 function getSicWaferData(): type.IProduct['data'] {
   return [
     {
-      imgData: imgSicSubstrate1,
+      imgData: imgProductSicWafer1,
       subName: '4, 6 inch 4H-SiC N-type wafer',
       rowData: [
         {
@@ -109,7 +109,7 @@ function getSicWaferData(): type.IProduct['data'] {
       ]
     },
     {
-      imgData: imgSicSubstrate2,
+      imgData: imgProductSicWafer2,
       subName: '4, 6 inch 4H-SiC Semi-Insulating wafer',
       rowData: [
         {

@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import emailRegex from 'email-regex'
 
 const getIsValidEmail = (value: string) =>
@@ -40,15 +40,10 @@ export default function ContactForm() {
 
   const isEnableSubmit = isValidEmail && isValidSubject && isValidMessage
 
+  const onSubmit: SubmitHandler<FormData> = (data) => console.log(data)
+
   return (
-    <form
-      method='POST'
-      name='contact'
-      autoComplete='off'
-      className='mb-6'
-      data-netlify-recaptcha='true'
-      data-netlify='true'
-    >
+    <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='mb-6'>
       <div className='mb-6'>
         <label
           htmlFor='email'
@@ -105,7 +100,6 @@ export default function ContactForm() {
           placeholder='Your message...'
         />
       </div>
-      <div data-netlify-recaptcha='true'></div>
       <button
         type='submit'
         disabled={!isEnableSubmit}

@@ -1,11 +1,10 @@
 ---
 import * as heroContent from '@src/contents/pages/home/hero.md'
 
-import Content from './content'
+import Content from './content/index.astro'
 ---
 
 <Content
-  client:load
   mainText={heroContent.frontmatter.mainText}
   subText={heroContent.frontmatter.subText}
 />

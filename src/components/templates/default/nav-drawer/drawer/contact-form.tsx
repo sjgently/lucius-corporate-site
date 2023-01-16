@@ -4,6 +4,12 @@ import emailRegex from 'email-regex'
 const getIsValidEmail = (value: string) =>
   emailRegex({ exact: true }).test(value)
 
+const encode = (data: Record<string, string>) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
+
 const buttonBaseClassList = [
   'text-white',
   'bg-blue-700',
@@ -40,10 +46,25 @@ export default function ContactForm() {
 
   const isEnableSubmit = isValidEmail && isValidSubject && isValidMessage
 
-  const onSubmit: SubmitHandler<FormData> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact', ...data })
+    })
+      .then(() => alert('Success!'))
+      .catch((error) => alert(error))
+  }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='mb-6'>
+    <form
+      name='contact'
+      onSubmit={handleSubmit(onSubmit)}
+      autoComplete='off'
+      data-netlify='true'
+      className='mb-6'
+    >
+      <input type='hidden' name='form-name' value='contact' />
       <div className='mb-6'>
         <label
           htmlFor='email'

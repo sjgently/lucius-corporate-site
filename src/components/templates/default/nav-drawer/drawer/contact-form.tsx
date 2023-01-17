@@ -1,8 +1,11 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
-import emailRegex from 'email-regex'
+import { z } from 'zod'
 
-const getIsValidEmail = (value: string) =>
-  emailRegex({ exact: true }).test(value)
+const getIsValidEmail = (value: string) => {
+  const emailSchema = z.string().email()
+  const { success } = emailSchema.safeParse(value)
+  return success
+}
 
 const encode = (data: Record<string, string>) => {
   return Object.keys(data)
@@ -109,7 +112,7 @@ export default function ContactForm() {
       <div className='mb-6'>
         <label
           htmlFor='message'
-          className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'
+          className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
         >
           Your message
         </label>

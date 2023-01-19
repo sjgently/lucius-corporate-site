@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -35,7 +36,13 @@ type FormData = {
 }
 
 export default function ContactForm() {
-  const { register, handleSubmit, watch } = useForm<FormData>()
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { isSubmitSuccessful }
+  } = useForm<FormData>()
 
   const watchEmail = watch('email')
   const isValidEmail = getIsValidEmail(watchEmail)
@@ -58,6 +65,12 @@ export default function ContactForm() {
       .then(() => alert('Success!'))
       .catch((error) => alert(error))
   }
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset({ email: '', subject: '', message: '' })
+    }
+  }, [isSubmitSuccessful])
 
   return (
     <form

@@ -82,9 +82,15 @@ export default function ContactForm() {
       onSubmit={handleSubmit(onSubmit)}
       autoComplete='off'
       data-netlify='true'
+      netlify-honeypot='bot-field'
       className='mb-6'
     >
       <input type='hidden' name='form-name' value='contact' />
+      <p className='hidden'>
+        <label>
+          Don’t fill this out if you’re human: <input name='bot-field' />
+        </label>
+      </p>
       <div className='mb-6'>
         <label
           htmlFor='email'

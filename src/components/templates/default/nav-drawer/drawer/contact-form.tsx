@@ -31,6 +31,7 @@ const buttonBaseClassList = [
 
 type FormData = {
   email: string
+  name: string
   subject: string
   message: string
 }
@@ -48,6 +49,9 @@ export default function ContactForm() {
   const isValidEmail = getIsValidEmail(watchEmail)
   const isShowEmailError = !isValidEmail && watchEmail !== ''
 
+  const watchName = watch('name')
+  const isValidName = watchName !== ''
+
   const watchSubject = watch('subject')
   const isValidSubject = watchSubject !== ''
 
@@ -62,13 +66,13 @@ export default function ContactForm() {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'contact', ...data })
     })
-      .then(() => alert('Success!'))
-      .catch((error) => alert(error))
+      .then(() => alert('Submit successful! We will get back to you soon.'))
+      .catch((error) => alert(`Submit failed! ${error}`))
   }
 
   useEffect(() => {
     if (isSubmitSuccessful) {
-      reset({ email: '', subject: '', message: '' })
+      reset({ email: '', name: '', subject: '', message: '' })
     }
   }, [isSubmitSuccessful])
 
@@ -106,6 +110,21 @@ export default function ContactForm() {
             invalid email
           </p>
         )}
+      </div>
+      <div className='mb-6'>
+        <label
+          htmlFor='name'
+          className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+        >
+          Your name
+        </label>
+        <input
+          type='text'
+          id='name'
+          {...register('name', { required: true })}
+          className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+          placeholder='Let us know how we can help you'
+        />
       </div>
       <div className='mb-6'>
         <label

@@ -98,7 +98,7 @@ export default function ContactForm() {
           placeholder='John Doe'
           aria-invalid={!!errors['name']}
         />
-        {!!errors['name'] && <AlertMessage>please fill your name</AlertMessage>}
+        {!!errors['name'] && <AlertMessage>required</AlertMessage>}
       </InputField>
       <InputField htmlFor='subject' labelText='Subject'>
         <input
@@ -109,9 +109,7 @@ export default function ContactForm() {
           placeholder='Let us know how we can help you'
           aria-invalid={!!errors['subject']}
         />
-        {!!errors['subject'] && (
-          <AlertMessage>please fill your subject</AlertMessage>
-        )}
+        {!!errors['subject'] && <AlertMessage>required</AlertMessage>}
       </InputField>
       <InputField htmlFor='message' labelText='Your message'>
         <textarea
@@ -122,9 +120,7 @@ export default function ContactForm() {
           placeholder='Your message...'
           aria-invalid={!!errors['message']}
         />
-        {!!errors['message'] && (
-          <AlertMessage>please fill your message</AlertMessage>
-        )}
+        {!!errors['message'] && <AlertMessage>required</AlertMessage>}
       </InputField>
       <button
         type='submit'

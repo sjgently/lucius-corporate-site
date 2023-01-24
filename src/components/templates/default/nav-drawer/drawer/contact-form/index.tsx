@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useAtom } from 'jotai'
 
+import { popupModalAtom } from '@src/stores/popup-modal'
 import { getIsValidEmail, encode } from '@src/utils/form-helper'
 
 import InputField from './input-field'
@@ -41,6 +43,8 @@ export default function ContactForm() {
     formState: { errors, isSubmitSuccessful }
   } = useForm<FormData>()
 
+  const [, setPopupModal] = useAtom(popupModalAtom)
+
   const onSubmit: SubmitHandler<FormData> = (data) => {
     if (Object.values(errors).length > 0) {
       return
@@ -51,8 +55,18 @@ export default function ContactForm() {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'contact', ...data })
     })
-      .then(() => alert('Submit successful! We will get back to you soon.'))
-      .catch((error) => alert(`Submit failed: ${error}`))
+      .then(() => {
+        setPopupModal({
+          isOpen: true,
+          text: 'Submit successful! We will get back to you soon.'
+        })
+      })
+      .catch((error) => {
+        setPopupModal({
+          isOpen: true,
+          text: `Submit failed: ${error}`
+        })
+      })
   }
 
   useEffect(() => {
